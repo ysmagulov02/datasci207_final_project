@@ -1,4 +1,3 @@
-# datasci207_final_project
 # Predicting Power Consumption of Generative AI Workloads
 
 UC Berkeley, MIDS 207 Final Project
