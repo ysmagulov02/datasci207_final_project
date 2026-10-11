@@ -1,4 +1,4 @@
-# Predicting Power Consumption of Generative AI Workloads
+# Predicting Power Consumption of Commerical Buildings in the U.S.
 
 UC Berkeley, MIDS 207 Final Project
 
@@ -11,18 +11,16 @@ UC Berkeley, MIDS 207 Final Project
 
 ## Overview
 
-Can we predict power draw for generative AI jobs from signals we can observe before or during a run, such as training vs. inference, LLM vs. image generation, and node count? Data center power and cooling get sized before the job mix is known, so accurate forecasts for modern GPU workloads matter for infrastructure planning.
 
 ## Data
 
-* **NLR Generative AI Workload Power Profiles** (H100 GPU data center, Vercellino et al., 2026): https://data.nlr.gov/submissions/312
-* **Energy Efficient AI System Performance** (Kaggle, 7,167 records): https://www.kaggle.com/datasets/colabsss/energy-efficient-ai-system-performance-dataset
+* US EIA, 2018 CBECS Survey Data, www.eia.gov, 2023. Retrieved from https://www.eia.gov/consumption/commercial/data/2018/index.php?view=microdata on October 11, 2026.
 
 ## Planned Approach
 
-* Baselines: linear regression and regularized regression
-* Models: gradient boosting (XGBoost) and a neural network
-* Evaluation: MAE and RMSE, plus peak power error, with held out job types and configurations to test generalization
+* Baselines: linear regression
+* Models: gradient boosting and FNN
+* Evaluation: MAE and RMSE, plus peak power error
 
 ## Repo Structure
 
@@ -43,6 +41,5 @@ pip install -r requirements.txt
 
 ## References
 
-* Vercellino et al. (2026). Measurement of generative AI workload power profiles for whole facility data center infrastructure planning. https://arxiv.org/abs/2604.07345
-* Lin et al. (2020). An artificial neural network approach to power consumption model construction for servers in cloud data centers. IEEE TSUSC.
-* Chuang et al. (2023). ECDX: Energy consumption prediction model based on distance correlation and XGBoost for edge data center. Information Sciences.
+* US EIA, 2018 CBECS Survey Data, www.eia.gov, 2023. Retrieved from https://www.eia.gov/consumption/commercial/data/2018/index.php?view=microdata on October 11, 2026.
+* Robinson, C., Dilkina, B., Hubbs, J., Zhang, W., Guhathakurta, S., Brown, M. A., & Pendyala, R. M. (2017). Machine learning approaches for estimating commercial building energy consumption. Applied Energy, 208, 889–904. https://doi.org/10.1016/j.apenergy.2017.09.060
