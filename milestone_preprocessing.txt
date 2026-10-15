@@ -1,0 +1,47 @@
+Data preprocessing, feature selection, and EDA
+
+The EIA's 2018 CBECS public CSV contains 6,436 buildings and 1,249 columns.
+MFBTU is annual major-fuels consumption in thousands of Btu (kBtu). Excluding
+79 inapplicable targets leaves 6,357 buildings, split into 4,449 training,
+954 validation, and 954 test examples (seed 42).
+
+We screened 23 building, operating, equipment, and weather candidates. OCCUPYP
+was excluded because 71.7% of training values were missing. Spearman correlations
+assessed numeric associations; mutual information also assessed categorical
+associations. A four-fold training-only ExtraTrees screening model measured
+the increase in held-out-fold MAE after each source variable was shuffled
+three times. The screening model used log1p(MFBTU); errors were measured in kBtu.
+
+We retained the ten largest positive mean effects that were positive in at
+least three folds: SQFT, PBA, NFLOOR, NWKER, WKHRS, RFTILT, MAINHT, MAINCL, GLSSPC, MONUSE. Area, activity,
+floors, staffing, hours, roof tilt, and equipment types had the strongest
+support. Glass coverage and months in use had much smaller effects and remain
+tentative. Climate-zone effects were unstable across folds. These exploratory
+scores depend on the screening model and correlated predictors; they do not
+establish causation, the best subset, or final model accuracy. Validation and
+test data were not used for selection.
+
+The ten source variables produce 91 encoded predictors. Training medians,
+one-hot categories, and optional numeric standardization are fitted on training
+rows only. Floor-count codes 994/995 are categories, not literal floor counts.
+Equipment skips remain explicit categories. Training IQR fences flag unusual
+numeric values; no outliers are removed. Delivered MFBTU values remain unchanged.
+Consumption components, bills, IDs, weights, and source flags are excluded from X.
+
+EIA's supplied imputations and masking are retained. Targets include 4,512 reported,
+1,637 imputed, and 208 strip-center estimates. Source flags and weights are saved
+separately for sensitivity checks and weighted evaluation. Equipment information
+must be available to the intended user. Final model evaluation remains separate.
+
+EDA uses the 4,449 training buildings only, without survey weighting. A compact
+figure shows the consumption distribution, floor area versus consumption,
+box plots for the six most common building activities, and numeric correlations.
+Consumption is right-skewed (mean 15.9 million; median 4.4 million kBtu). Area
+and employees correlate strongly with consumption (0.91 and 0.84); building-type
+differences are unadjusted for size and schedules. These are associations, not
+causal effects. Plot log scales do not change the delivered target.
+
+Sources:
+EIA microdata: https://www.eia.gov/consumption/commercial/data/2018/index.php?view=microdata
+Codebook: https://www.eia.gov/consumption/commercial/data/2018/xls/2018microdata_codebook.xlsx
+User guide, pp. 17-21: https://www.eia.gov/consumption/commercial/data/2018/pdf/Users%20Guide%20to%20the%202018%20CBECS%20Public%20Use%20Microdata%20File.pdf
