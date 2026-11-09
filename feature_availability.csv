@@ -1,0 +1,24 @@
+variable,possible_source,why_it_may_help_and_limit,availability_verified_for_real_users
+SQFT,Property records / floor plans,Size for lighting and conditioning; exact large values are masked in CBECS.,False
+FLCEILHT,Floor plans / walkthrough,Height proxy for conditioned volume; may need measurement.,False
+WKHRS,Seller / tenant questionnaire,Operating schedule; not a listing attribute; estimate for the reference year.,False
+NWKER,Seller / tenant questionnaire,"Workers present on the main shift, not total payroll headcount; may be unavailable.",False
+MONUSE,Seller / occupancy history,Months operating in the reference year; not guaranteed public.,False
+HDD65,Public weather for property location and reference year,Need a stated weather year; realized future weather is not available in advance.,False
+CDD65,Public weather for property location and reference year,Same timing issue; public microdata weather is perturbed for privacy.,False
+HEATP,Inspection / mechanical plans / seller,Heated share; estimate of coverage may be needed.,False
+COOLP,Inspection / mechanical plans / seller,Cooled share; preserve missing when unknown or inapplicable.,False
+OCCUPYP,Seller / tenant questionnaire,Average occupied floor share; often structurally missing in CBECS; retain and flag.,False
+CENDIV,Known address -> census division,Broad region; the public training file does not include exact addresses.,False
+PBA,Listing / seller / walkthrough,Principal activity; planned use may differ from the reference-year use.,False
+PUBCLIM,Known address -> published climate zone mapping,Map to CBECS categories; withheld source values remain a category.,False
+WLCNS,Walkthrough / construction records,Wall material; may not be supplied in a listing.,False
+RFCNS,Inspection / construction records,Roof material; seller or inspection may be required.,False
+RFTILT,Walkthrough / imagery / plans,Roof form; use the codebook categories.,False
+BLDSHP,Plans / imagery / walkthrough,Building footprint shape; may require manual coding.,False
+GLSSPC,Plans / exterior inspection,Exterior glass share category; may need estimation.,False
+NFLOOR,Property records / plans,Floor count; map to CBECS floor-range codes for 10+ floors.,False
+YRCONC,Property records / seller,Construction period; renovations are not captured by this variable alone.,False
+ATTIC,Plans / inspection / seller,Attic presence; may be unknown until inspection.,False
+MAINHT,Mechanical inspection / equipment schedule / seller,Main heating equipment; access and reliable records are needed.,False
+MAINCL,Mechanical inspection / equipment schedule / seller,Main cooling equipment; requires the same due-diligence access.,False
