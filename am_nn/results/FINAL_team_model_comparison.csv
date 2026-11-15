@@ -1,0 +1,4 @@
+model,val_MAE_M,val_R2,test_MAE_M,test_RMSE_M,test_R2
+Linear regression (Isabella),9.42,0.697,11.453,28.174,0.55
+Gradient boosting (Yera),4.421,0.826,5.972,22.423,0.715
+"Neural network (Alex, 3-seed mean)",4.877769381258736,0.8097045886236954,6.28647196347111,23.053549215746795,0.6981007482796479
